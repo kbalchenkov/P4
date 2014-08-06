@@ -1,5 +1,8 @@
 <?php
 
+$listofcategories = ['mensshorthair','mensmediumlength','menslonghairstyles',
+'menscurlyhairstyles','mensblackandafrohairstyles','menscelebrityhairstyles','womensshortcurlyhairstyles','womensblackbraidedhairstyles','womenssummerhairstyles','womensprofessionalhairstyles','womensweddinghairstyles','womenslonghairstyles','womensshorthairstyles'];
+
 $mensshorthair= Array(
 'http://static.fashionbeans.com/wp-content/uploads/2014/07/kinky8-260x400.jpg',
 'http://static.fashionbeans.com/wp-content/uploads/2014/07/palmer-260x400.jpg',
@@ -42,6 +45,7 @@ $mensshorthair= Array(
 'http://static.fashionbeans.com/wp-content/uploads/2014/04/howood-260x400.jpg',
 'http://static.fashionbeans.com/wp-content/uploads/2014/03/wt-260x400.jpg'
 );
+
 
 $mensmediumlength= Array(
 'http://static.fashionbeans.com/wp-content/uploads/2014/07/headromance-260x400.jpg',

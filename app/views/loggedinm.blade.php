@@ -3,11 +3,13 @@
 
 <P>Select what type of heirstyle you had in mind, and our generator will generate it for you</p>
 
-{{ Form::open(array('url'=>'logedinm')) }}
+{{ Form::open(array('url'=>'loggedinm')) }}
 
 <!-- checkbox -->
 {{ Form::label('mensshorthair','Mens Short Hair',array('id'=>'','class'=>'')) }}
 {{ Form::checkbox('mensshorthair','1',false) }} Select<br><br>
+
+<input type="checkbox" name="check_list[]" value="C/C++"><label>C/C++</label><br/>
 
 {{ Form::label('mensmediumlength','Mens Medium Length',array('id'=>'','class'=>'')) }}
 {{ Form::checkbox('mensmediumlength','1',false) }} Select<br><br>
@@ -24,7 +26,7 @@
 {{ Form::label('menscelebrityhairstyles','Mens Celebrity Hair',array('id'=>'','class'=>'')) }}
 {{ Form::checkbox('mensblackandafrohairstyles','1',false) }} Select<br><br>
   
-{{ Form::submit('Save') }}
+{{ Form::submit('Go!') }}
 
 
  

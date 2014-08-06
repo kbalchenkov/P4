@@ -56,23 +56,28 @@ Route::post('/signup',
         function() {
 
             $user = new User;
-			$user->gender    = Input::get('gender');
+			$user->gender    = Input::get('Gender');
             $user->email    = Input::get('email');
             $user->password = Hash::make(Input::get('password'));
             
-
+			
+            # Try to add the user 
             try {
                 $user->save();
             }
             # Fail
             catch (Exception $e) {
-                return Redirect::to('/signup')->with('flash_message', 'Sign up failed; please try again.')->withInput();
+                return Redirect::to('/signup');  
+				
+				//->with('flash_message', 'Sign up failed; please try again.')->withInput()
             }
 
             # Log the user in
             Auth::login($user);
 
-            return Redirect::to('/logedin')->with('flash_message', 'Welcome to Hairz!');
+            return Redirect::to('/loggedin');
+			
+			//->with('flash_message', 'Welcome to Foobooks!')
 
         }
     )
@@ -80,22 +85,22 @@ Route::post('/signup',
 
 
 
-Route::get('/logedin',
+Route::get('/loggedin',
     array(
         'before' => 'guest',
 	
         function() {
 		
-		$gender = Input::get('gender');
+		$gender = Input::get('Gender');
 		
-		if ($gender = 'Womens'){
+		if ($gender == 'Womens'){
 		
-		return view::make('logedinm');
+		return view::make('loggedinw');
 		}
 		else {
 		
 		
-            return View::make('logediw');
+            return View::make('loggedinm');
 			
 			
         }
@@ -106,48 +111,208 @@ Route::get('/logedin',
 
 
 
-Route::get('logedinm',     
+Route::get('loggedinm',     
 
   // array('before' => 'guest',
         function() {
-            return View::make('logedinm');
+            return View::make('loggedinm');
         }
     //)
 );
-Route::post('logedinm', array('before'=>'csrf',function(){
+Route::post('loggedinm', array('before'=>'csrf',function(){
+ 
+ include(app_path().'/views/listofarrays.php');
+ 
+	$checked = Input::all();
+ 
+
+	$set_items =[];
+	foreach ($checked as $name => $item) {
+	if (in_array($name,$listofcategories)) {
+		if ($item ==1) {
+	 array_push($set_items, $name); 
+	 }
+	} 
+}
+
+	
+ 
+		
+	foreach($set_items as $item) 
+	
+	{
+$images=[];
+	
+	
+		if ($item == 'mensshorthair') {
+	
+		$rand = array_rand($mensshorthair, 1);
+		
+		array_push($images,$mensshorthair[$rand]);
+	}
+		if ($item == 'mensmediumlength') {
+	
+		$rand = array_rand($mensmediumlength, 1);
+		
+		
+		array_push($images,$mensmediumlength[$rand]);
+	}
+	
+	
+		if ($item == 'menslonghairstyles') {
+	
+		$rand = array_rand($menslonghairstyles, 1);
+		
+		
+		array_push($images,$menslonghairstyles[$rand]);
+	}
+	
+		if ($item == 'menscurlyhairstyles') {
+	
+		$rand = array_rand($menscurlyhairstyles, 1);
+		
+		
+		array_push($images,$menscurlyhairstyles[$rand]);
+	}	
+		if ($item == 'mensblackandafrohairstyles') {
+	
+		$rand = array_rand($mensblackandafrohairstyles, 1);
+		
+		
+		array_push($images,$mensblackandafrohairstyles[$rand]);
+	}	
+	
+		if ($item == 'menscelebrityhairstyles') {
+	
+		$rand = array_rand($menscelebrityhairstyles, 1);
+		
+		
+		array_push($images,$menscelebrityhairstyles[$rand]);
+	}	
+
+	
+//$cleanedup = array_unique($images);
+
+// echo $mensshorthair[array_rand($mensshorthair)];
+ //print_r($checked);
+
+	 
+	 foreach($images as $image) {
+	 
+	echo HTML::image($image);
+	
+
+	$history = new history();
+	$history->url_name = $image;
+	$history->user()->associate($user);
+	$history->save();
+	
+	 
+	 }
+	 
+	 
+
  
  
- $checked = Input::all();
- 
- 
- 
-  print_r($checked);
- 
- 
- 
-}));
+}}));
 
 
-Route::get('logedinw',     
+Route::get('loggedinw',     
 
   // array('before' => 'guest',
         function() {
-            return View::make('logedinw');
+            return View::make('loggedinw');
         }
     //)
 );
-Route::post('logedinw', array('before'=>'csrf',function(){
+Route::post('loggedinw', array('before'=>'csrf',function(){
  
  
- $checked = Input::all();
+ include(app_path().'/views/listofarrays.php');
+ 
+	$checked = Input::all();
+ 
+
+	$set_items =[];
+	foreach ($checked as $name => $item) {
+	if (in_array($name,$listofcategories)) {
+		if ($item ==1) {
+	 array_push($set_items, $name); 
+	 }
+	} 
+}
+
+	
+ 
+		
+	foreach($set_items as $item) 
+	
+	{
+		$images=[];
+	
+	
+	
+		if ($item == 'womensshortcurlyhairstyles') {
+	
+		$rand = array_rand($womensshortcurlyhairstyles, 1);
+		
+		
+		array_push($images,$womensshortcurlyhairstyles[$rand]);
+	}
+		if ($item == 'womensblackbraidedhairstyles') {
+	
+		$rand = array_rand($womensblackbraidedhairstyles, 1);
+		
+		
+		array_push($images,$womensblackbraidedhairstyles[$rand]);
+	}	
+		if ($item == 'womenssummerhairstyles') {
+	
+		$rand = array_rand($womenssummerhairstyles, 1);
+		
+		
+		array_push($images,$womenssummerhairstyles[$rand]);
+	}	
+		if ($item == 'womensprofessionalhairstyles') {
+	
+		$rand = array_rand($womensprofessionalhairstyles, 1);
+		
+		
+		array_push($images,$womensprofessionalhairstyles[$rand]);
+	}	
+		if ($item == 'womensweddinghairstyles') {
+
+		$rand = array_rand($womensweddinghairstyles, 1);
+		
+		
+		array_push($images,$womensweddinghairstyles[$rand]);
+	}	
+		if ($item == 'womenslonghairstyles') {
+	
+		$rand = array_rand($womenslonghairstyles, 1);
+		
+		
+		array_push($images,$womenslonghairstyles[$rand]);
+	}
+		if ($item == 'womensshorthairstyles') {
+	
+		$rand = array_rand($womensshorthairstyles, 1);
+		
+		
+		array_push($images,$womensshorthairstyles[$rand]);
+	}	
+	
+
+
+	 foreach($images as $image) {
+	 
+	echo HTML::image($image);
+	
+	 
+	 }
  
  
- 
-  print_r($checked);
- 
- 
- 
-}));
+}}));
 
 
 
@@ -199,6 +364,27 @@ Route::get('/logout', function() {
 });
 
 
+
+Route::get('/migrate-test',function() {
+	Artisan::call('migrate');
+});
+
+
+
+Route::get('/practice-creating', function() {
+
+    # Instantiate a new Book model class
+    $history = new History();
+
+    # Set 
+    $history->url_name = 'http://static.fashionbeans.com/wp-content/uploads/2014/07/kinky8-260x400.jpg';
+
+    # This is where the Eloquent ORM magic happens
+    $history->save();
+
+    return 'A new book has been added! Check your database to see...';
+
+});
 
 
 

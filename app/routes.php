@@ -65,19 +65,16 @@ Route::post('/signup',
             try {
                 $user->save();
             }
+	
             # Fail
             catch (Exception $e) {
-                return Redirect::to('/signup');  
-				
-				//->with('flash_message', 'Sign up failed; please try again.')->withInput()
+                return Redirect::to('/signup')->with('flash_message', 'Sign up failed; please try again.')->withInput();
             }
 
             # Log the user in
             Auth::login($user);
 
-            return Redirect::to('/loggedin');
-			
-			//->with('flash_message', 'Welcome to Foobooks!')
+            return Redirect::to('/loggedin')->with('flash_message', 'Welcome to Hairz!');
 
         }
     )
@@ -85,28 +82,31 @@ Route::post('/signup',
 
 
 
+
+
 Route::get('/loggedin',
-    array(
-        'before' => 'guest',
-	
-        function() {
+    //array('before' => 'guest',        
+		function() {
 		
-		$gender = Input::get('Gender');
+		$gender = Auth::user()->gender;
+
 		
 		if ($gender == 'Womens'){
 		
-		return view::make('loggedinw');
+			return Redirect::to('loggedinw');
 		}
 		else {
 		
 		
-            return View::make('loggedinm');
+            return Redirect::to ('loggedinm');
 			
 			
         }
 	}
-	)	
+	//	)	
 );
+
+
 
 
 
@@ -197,24 +197,30 @@ $images=[];
  //print_r($checked);
 
 	 
-	 foreach($images as $image) {
+	// foreach($images as $image) {
 	 
-	echo HTML::image($image);
-	
+	//echo HTML::image($image); 
 
-	$history = new history();
-	$history->url_name = $image;
-	$history->user()->associate($user);
-	$history->save();
+	
+return View::make('/display')->with('images', $images);
+
+	//$history = new history();
+	//$history->url_name = $image;
+	//$history->user()->associate($user);
+	//$history->save();
 	
 	 
-	 }
+	// }
 	 
 	 
 
  
  
-}}));
+}
+
+//return Redirect::to('/display')->with($images);
+
+}));
 
 
 Route::get('loggedinw',     
@@ -338,7 +344,7 @@ Route::post('/login',
             $credentials = Input::only('email', 'password');
 
             if (Auth::attempt($credentials, $remember = true)) {
-                return Redirect::intended('/logedin')->with('flash_message', 'Welcome Back!');
+                return Redirect::intended('/loggedin')->with('flash_message', 'Welcome Back!');
             }
             else {
                 return Redirect::to('/login')->with('flash_message', 'Log in failed; please try again.');

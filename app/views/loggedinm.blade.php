@@ -1,3 +1,7 @@
+
+
+@extends('_master')
+
 <h1>Men's Hair Styles</h1>
 
 
@@ -8,8 +12,6 @@
 <!-- checkbox -->
 {{ Form::label('mensshorthair','Mens Short Hair',array('id'=>'','class'=>'')) }}
 {{ Form::checkbox('mensshorthair','1',false) }} Select<br><br>
-
-<input type="checkbox" name="check_list[]" value="C/C++"><label>C/C++</label><br/>
 
 {{ Form::label('mensmediumlength','Mens Medium Length',array('id'=>'','class'=>'')) }}
 {{ Form::checkbox('mensmediumlength','1',false) }} Select<br><br>

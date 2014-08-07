@@ -211,7 +211,7 @@ Route::post('loggedinm', array('before'=>'csrf',function(){
 
 	
 	
-return View::make('/display')->with('images', $images);
+
 
 //return View::make('/display', array('images' => $images));
 
@@ -225,7 +225,7 @@ return View::make('/display')->with('images', $images);
  
  
 }
-
+return View::make('/display')->with('images', $images);
 
 
 }));
@@ -319,10 +319,13 @@ Route::post('loggedinw', array('before'=>'csrf',function(){
 
 
 
+
+ 
+ 
+}
 return View::make('/display')->with('images', $images);
- 
- 
-}}
+
+}
 
 
 

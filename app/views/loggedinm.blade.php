@@ -6,10 +6,14 @@
 
 @section('content')
 
+<center>
+
 <h1>Men's Hair Styles</h1>
 
 
 <P>Select what type of heirstyle you had in mind, and our generator will generate it for you</p>
+
+</center>
 
 <div class="form-inline">
 

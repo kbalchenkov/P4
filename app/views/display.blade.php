@@ -9,12 +9,12 @@
 
 	<br>
 
-<?php print_r($images); ?>
 	
 	@foreach ($images as $image)
 	
 	
-	{{ HTML::image($image) }}
+
+	{{ HTML::image($image, 'photo', array('class' => 'photo')); }}
 	
    
 	@endforeach

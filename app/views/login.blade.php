@@ -1,3 +1,15 @@
+@extends('_master')
+
+@section('title')
+    Welcome to Hairz
+@stop 
+
+@section('content')
+
+<center>
+
+<div class="well">
+
 <h1>Log in</h1>
 
 {{ Form::open(array('url' => '/login')) }}
@@ -13,8 +25,11 @@
 
 {{ Form::close() }}
 
+</div>
 
+</center>
 
+@stop
 
 
 

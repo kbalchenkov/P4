@@ -1,11 +1,18 @@
-
-
 @extends('_master')
+
+@section('title')
+    Welcome to Hairz
+@stop 
+
+@section('content')
 
 <h1>Men's Hair Styles</h1>
 
 
 <P>Select what type of heirstyle you had in mind, and our generator will generate it for you</p>
+
+<div class="form-inline">
+
 
 {{ Form::open(array('url'=>'loggedinm')) }}
 
@@ -30,7 +37,8 @@
   
 {{ Form::submit('Go!') }}
 
-
+</div>
  
 {{ Form::close() }}
 
+@stop

@@ -133,15 +133,17 @@ Route::post('loggedinm', array('before'=>'csrf',function(){
 	 array_push($set_items, $name); 
 	 }
 	} 
+	
+	
 }
 
-	
- 
-		
+ $images=[];
+
+
 	foreach($set_items as $item) 
 	
 	{
-$images=[];
+		
 	
 	
 		if ($item == 'mensshorthair') {
@@ -194,23 +196,29 @@ $images=[];
 //$cleanedup = array_unique($images);
 
 // echo $mensshorthair[array_rand($mensshorthair)];
- //print_r($checked);
+ //print_r($images);
 
 	 
-	// foreach($images as $image) {
+	//foreach($images as $image) {
 	 
 	//echo HTML::image($image); 
 
+	//$history = new history();
+	//$history->url_name = $images;
+	//$history->user()->associate(Auth::user());
+	//$history->save();
+	
+
+	
 	
 return View::make('/display')->with('images', $images);
 
-	//$history = new history();
-	//$history->url_name = $image;
-	//$history->user()->associate($user);
-	//$history->save();
+//return View::make('/display', array('images' => $images));
+
+
 	
 	 
-	// }
+	//}
 	 
 	 
 
@@ -218,7 +226,7 @@ return View::make('/display')->with('images', $images);
  
 }
 
-//return Redirect::to('/display')->with($images);
+
 
 }));
 
@@ -250,11 +258,11 @@ Route::post('loggedinw', array('before'=>'csrf',function(){
 
 	
  
-		
+		$images=[];
 	foreach($set_items as $item) 
 	
 	{
-		$images=[];
+		
 	
 	
 	
@@ -310,15 +318,15 @@ Route::post('loggedinw', array('before'=>'csrf',function(){
 	
 
 
-	 foreach($images as $image) {
-	 
-	echo HTML::image($image);
-	
-	 
-	 }
+
+return View::make('/display')->with('images', $images);
  
  
-}}));
+}}
+
+
+
+));
 
 
 
@@ -373,23 +381,6 @@ Route::get('/logout', function() {
 
 Route::get('/migrate-test',function() {
 	Artisan::call('migrate');
-});
-
-
-
-Route::get('/practice-creating', function() {
-
-    # Instantiate a new Book model class
-    $history = new History();
-
-    # Set 
-    $history->url_name = 'http://static.fashionbeans.com/wp-content/uploads/2014/07/kinky8-260x400.jpg';
-
-    # This is where the Eloquent ORM magic happens
-    $history->save();
-
-    return 'A new book has been added! Check your database to see...';
-
 });
 
 

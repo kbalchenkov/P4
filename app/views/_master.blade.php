@@ -2,6 +2,10 @@
 <html>
 <head>
 
+
+{{ HTML::style('css/style.css') }}
+{{ HTML::style('css/bootstrap.min.css') }}
+
     <title>@yield('title', 'My Web Site');</title>
 
     <meta charset='utf-8'>
@@ -10,7 +14,13 @@
 
 </head>
 <body>
-
+    
+	
+@if(Session::get('flash_message'))
+    <img class='flash-message'>{{ Session::get('flash_message') }}</img>
+@endif
+	
+	
 @if(Auth::check())
     <a href='/logout'>Log out {{ Auth::user()->email; }}</a>
 @else 
@@ -20,9 +30,7 @@
 
 
 
-    @if(Session::get('flash_message'))
-        <div class='flash-message'>{{ Session::get('flash_message') }}</div>
-    @endif
+
 
 
 @yield('content')

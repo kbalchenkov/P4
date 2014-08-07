@@ -18,20 +18,16 @@ return array(
 	|
 	*/
 
-	'connections' => array(
+    'connections' => array(
 
-		'mysql' => array(
-			'driver'    => 'mysql',
-			'host'      => 'localhost',
-			'database'  => 'p4',
-			'username'  => 'root',
-			'password'  => 'root',
-			'charset'   => 'utf8',
-			'collation' => 'utf8_unicode_ci',
-			'prefix'    => '',
-		),
+        'mysql' => array(
+            'driver'    => 'mysql',
+            'host'      => 'tunnel.pagodabox.com:3306',
+            'database'  => 'P4',
+            'username'  => 'trinh',
+            'password'  => 'Dk4V5UuO',
+        ),
 
-
-	),
+    ),
 
 );

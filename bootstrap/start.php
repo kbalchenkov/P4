@@ -27,7 +27,7 @@ $app = new Illuminate\Foundation\Application;
 $env = $app->detectEnvironment(array(
 
     'local' => array('local'),
-    'production' => array('tunnel.pagodabox.com:3306'),
+    'production' => array('tunnel.pagodabox.com'),
 
 ));
 

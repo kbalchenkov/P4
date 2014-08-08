@@ -14,4 +14,10 @@ protected $table = 'users';
 
 protected $hidden = array('password', 'remember_token');
 
+
+        public function history() {
+            # user has many histores
+            return $this->hasMany('History');
+        }
+
 }

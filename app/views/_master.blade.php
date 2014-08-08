@@ -27,7 +27,7 @@
     <a href='/signup'>Sign up</a> or <a href='/login'>Log in</a>
 @endif
 
-
+<a href='/myhistory'>My History</a>
 
 
 

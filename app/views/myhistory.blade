@@ -1,0 +1,33 @@
+@extends('_master')
+
+@section('title')
+    Your Hairz Results
+@stop 
+
+@section('content')
+    <h1>Here is your history</h1>
+
+
+}
+
+	@foreach ($historys as $history)
+	
+	
+
+	{{ HTML::image($history); }}
+	
+	
+
+	
+   
+	@endforeach
+
+
+
+
+
+
+	<br>
+
+		
+@stop

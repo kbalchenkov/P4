@@ -22,10 +22,10 @@ return array(
 
         'mysql' => array(
             'driver'    => 'mysql',
-            'host'      => 'tunnel.pagodabox.com:3306',
+            'host'      => '127.0.0.1',
             'database'  => 'P4',
-            'username'  => 'trinh',
-            'password'  => 'Dk4V5UuO',
+            'username'  => 'root',
+            'password'  => 'root',
         ),
 
     ),

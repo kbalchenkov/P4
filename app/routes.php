@@ -37,6 +37,64 @@ return View::make('index');
 );
 
 
+Route::post('/history',function() {
+	
+	$user = Auth::user();
+
+	$history = Input::all();
+	$clean_images =[];
+	
+		foreach($history as $value =>$image) {
+
+
+if (strpos($value,'http') !== false) {
+	 array_push($clean_images, $value); 
+	} 
+	}
+//print_r($clean_images);
+
+
+	foreach($clean_images as $image){
+	
+	
+	$history = new History;
+	$history->user_id = Auth::user();
+	$history->url_name = $image;
+	$history->user()->associate($user); 
+	$history->save();
+	
+	}
+
+	
+return Redirect::to('/loggedin');
+
+
+
+
+
+});
+
+Route::get('myhistory',     
+
+  // array('before' => 'guest',
+        function() {
+
+		$historys = history::with('user')->get(); 
+		
+		
+		return View::make('/myhistory')->with('historys', $historys);
+		
+
+
+foreach($historys as $history) {
+    echo $history->user->email.' has '.$history->url_name.'<br>';
+}
+        }
+    //)
+);
+
+
+
 
 
 // Sign up Route 
